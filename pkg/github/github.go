@@ -171,6 +171,19 @@ func (svc *GithubService) IsClosed(prNumber int) (bool, error) {
 	return pr.GetState() == "closed", nil
 }
 
+// ReactToComment adds a reaction to a comment.
+func (svc *GithubService) ReactToComment(repoOwner string, repoName string, pullNum int, commentID int64, reaction string) error {
+	fmt.Printf("POST /repos/%v/%v/issues/comments/%d/reactions", repoOwner, repoName, commentID)
+	_, _, err := svc.Client.Reactions.CreateIssueCommentReaction(context.Background(), repoOwner, repoName, commentID, reaction)
+	return err
+}
+
+// func (g *GithubService) ReactToComment(repo models.Repo, pullNum int, commentID int64, reaction string) error {
+// 	g.logger.Debug("POST /repos/%v/%v/issues/comments/%d/reactions", repo.Owner, repo.Name, commentID)
+// 	_, _, err := g.client.Reactions.CreateIssueCommentReaction(g.ctx, repo.Owner, repo.Name, commentID, reaction)
+// 	return err
+// }
+
 func GetGitHubContext(ghContext string) (*models.Github, error) {
 	parsedGhContext := new(models.Github)
 	err := json.Unmarshal([]byte(ghContext), &parsedGhContext)
