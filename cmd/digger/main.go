@@ -125,6 +125,13 @@ func gitHubCI(lock core_locking.Lock, policyChecker core_policy.Checker, reporti
 			reportErrorAndExit(githubActor, fmt.Sprintf("Failed to parse GitHub context. %s", err), 3)
 		}
 		println("GitHub context parsed successfully")
+		// sandbox
+		fmt.Println("Sandbox mode is enabled")
+		fmt.Printf("GitHub event: %v\n", parsedGhContext)
+		// fmt.Printf("GitHub repoOwner: %s\n", parsedGhContext.RepositoryOwner)
+		// fmt.Printf("GitHub repoName: %s\n", parsedGhContext.Repository)
+		// fmt.Printf("GitHub pullNum: %s\n", parsedGhContext.)
+		// fmt.Printf("GitHub commentID: %s\n", parsedGhContext.Repository)
 
 		ghEvent := parsedGhContext.Event
 		eventName := parsedGhContext.EventName
