@@ -76,8 +76,9 @@ func (svc *GithubService) GetComments(prNumber int) ([]ci.Comment, error) {
 			Id:   *comment.ID,
 			Body: comment.Body,
 		}
+		fmt.Printf("commentBody: %v\n", comment.Body)
 	}
-	fmt.Printf("comments: %v\n", commentBodies)
+	// fmt.Printf("comments last: %v\n", commentBodies[len(commentBodies)-1])
 
 	return commentBodies, err
 }
