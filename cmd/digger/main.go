@@ -127,6 +127,7 @@ func gitHubCI(lock core_locking.Lock, policyChecker core_policy.Checker, reporti
 		println("GitHub context parsed successfully")
 		// sandbox
 		fmt.Println("Sandbox mode is enabled")
+		fmt.Printf("GitHub ghContext: %v\n", ghContext)
 		fmt.Printf("GitHub Event: %v\n", parsedGhContext.Event)
 		fmt.Printf("GitHub EventName: %v\n", parsedGhContext.EventName)
 		fmt.Printf("GitHub repoOwner: %v\n", parsedGhContext.RepositoryOwner)
