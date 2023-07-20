@@ -132,10 +132,8 @@ func gitHubCI(lock core_locking.Lock, policyChecker core_policy.Checker, reporti
 		fmt.Printf("GitHub EventName: %v\n", parsedGhContext.EventName)
 		fmt.Printf("GitHub repoOwner: %v\n", parsedGhContext.RepositoryOwner)
 		fmt.Printf("GitHub repoName: %v\n", parsedGhContext.Repository)
-		fmt.Printf("GitHub pullNum: %v\n", parsedGhContext.Issue.Number)
-		fmt.Printf("GitHub commentID: %v\n", parsedGhContext.Comment.Id)
-		fmt.Printf("GitHub Issue: %v\n", parsedGhContext.Issue)
-		fmt.Printf("GitHub Comment: %v\n", parsedGhContext.Comment)
+		fmt.Printf("GitHub pullNum: %v\n", parsedGhContext.Event.Issue.Number)
+		fmt.Printf("GitHub commentID: %v\n", parsedGhContext.Event.Comment.Id)
 
 		ghEvent := parsedGhContext.Event
 		eventName := parsedGhContext.EventName
